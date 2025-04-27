@@ -38,8 +38,8 @@ modules:
     sources:
       # App
       - type: archive
-        url: https://github.com/intiface/intiface-central/releases/download/v2.6.5/intiface-central-v2.6.5-linux-ubuntu-22.04-x64.zip
-        sha256: 8a15a03d003fe8f69c10f8e3702a818c97cb393196aa67852be2da3900219e49
+        url: https://github.com/intiface/intiface-central/releases/download/v2.6.7/intiface-central-v2.6.7-linux-ubuntu-22.04-x64.zip
+        sha256: 7a907ffc10e2a7066029dca276141e85bad4ff7954862e216aef95ee8ac64c6b
         x-checker-data:
           type: json
           url: https://api.github.com/repos/intiface/intiface-central/releases/latest
