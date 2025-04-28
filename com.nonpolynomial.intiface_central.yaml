@@ -34,6 +34,7 @@ modules:
       - install -Dt /app/share/applications/ com.nonpolynomial.intiface_central.desktop
 
       # Icon
+      - cp data/flutter_assets/assets/icons/intiface_central_icon.svg com.nonpolynomial.intiface_central.svg
       - install -Dt /app/share/icons/hicolor/scalable/apps/ com.nonpolynomial.intiface_central.svg
     sources:
       # App
@@ -46,24 +47,6 @@ modules:
           version-query: .name | sub("^.*v"; "")
           url-query: .assets[] | select(.name=="intiface-central-v" + $version + "-linux-ubuntu-22.04-x64.zip")
             | .browser_download_url
-
-      # Icon
-      - type: file
-        url: https://raw.githubusercontent.com/intiface/intiface-central/bbe3e97f1509b657b187276bc403571a14e0d92f/assets/icons/intiface_central_icon.svg
-        dest-filename: com.nonpolynomial.intiface_central.svg
-        sha256: 1323486660dd2b235c510d264b112517ba93fd6cfaaac0dbc35279372f2900c4
-
-      # Metainfo
-      - type: file
-        url: https://raw.githubusercontent.com/intiface/intiface-central/6db19d111dbddfea715d9749cdb77ac47a5b908a/linux/com.nonpolynomial.intiface_central.metainfo.xml
-        dest-filename: com.nonpolynomial.intiface_central.metainfo.xml
-        sha256: f3e13ae8ed9e4c79aeb1370d3406e37a41eb38255cc22da3784a31e08ba36e50
-
-      # Desktop
-      - type: file
-        url: https://raw.githubusercontent.com/intiface/intiface-central/ad244d93f221fd06f4635f2b4d3332c1aa5db610/linux/com.nonpolynomial.intiface_central.desktop
-        dest-filename: com.nonpolynomial.intiface_central.desktop
-        sha256: 2c4b71d4716fb4237fba001433e1c2cc4904310a9a0da4225e6b154daa82b4c2
 
       # Launcher
       - type: file
