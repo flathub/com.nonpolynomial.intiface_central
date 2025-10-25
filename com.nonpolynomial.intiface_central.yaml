@@ -39,13 +39,13 @@ modules:
     sources:
       # App
       - type: archive
-        url: https://github.com/intiface/intiface-central/releases/download/v2.6.7/intiface-central-v2.6.7-linux-ubuntu-22.04-x64.zip
-        sha256: c3287fc6c28277bf5b71901df492e7c79c885fe3e9837b784eb4bde4216f72f5
+        url: https://github.com/intiface/intiface-central/releases/download/v2.6.8/intiface_central_v2.6.8-linux-ubuntu-22.04-x64.zip
+        sha256: d673583ac9f55fc3984befafaefac8edbfd2cb1084ef7437c5ea81d0fa960c9c
         x-checker-data:
           type: json
           url: https://api.github.com/repos/intiface/intiface-central/releases/latest
           version-query: .name | sub("^.*v"; "")
-          url-query: .assets[] | select(.name=="intiface-central-v" + $version + "-linux-ubuntu-22.04-x64.zip")
+          url-query: .assets[] | select(.name | test($version + "-linux-ubuntu-22.04-x64.zip$"))
             | .browser_download_url
 
       # Launcher
