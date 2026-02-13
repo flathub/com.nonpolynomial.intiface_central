@@ -16,6 +16,7 @@ finish-args:
   - --system-talk-name=org.bluez
 
 modules:
+  - shared-modules/libayatana-appindicator/libayatana-appindicator-gtk3.json
   - name: intiface
     buildsystem: simple
     build-commands:
