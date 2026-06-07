@@ -41,7 +41,7 @@ modules:
       # App
       - type: archive
         url: https://github.com/intiface/intiface-central/releases/download/v3.1.0%2B42/intiface-central-v3.1.0-linux-ubuntu-22.04-x64.zip
-        sha256: sha256:8aaef2095ea620d5d86c897b38c82360a90b803233258230e56fd954648c09fc
+        sha256: 8aaef2095ea620d5d86c897b38c82360a90b803233258230e56fd954648c09fc
         x-checker-data:
           type: json
           url: https://api.github.com/repos/intiface/intiface-central/releases/latest
