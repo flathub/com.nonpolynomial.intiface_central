@@ -46,8 +46,8 @@ modules:
           type: json
           url: https://api.github.com/repos/intiface/intiface-central/releases/latest
           version-query: .name | sub("^.*v"; "")
-          url-query: .assets[] | select(.name | test($version + "-linux-ubuntu-22.04-x64.zip$"))
-            | .browser_download_url
+          url-query: '.assets[] | select(.name | endswith($version + "-linux-ubuntu-22.04-x64.zip")) | .browser_download_url'
+
 
       # Launcher
       - type: file
