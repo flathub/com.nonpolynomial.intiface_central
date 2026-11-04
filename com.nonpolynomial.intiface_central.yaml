@@ -20,6 +20,9 @@ modules:
   - name: intiface
     buildsystem: simple
     build-commands:
+      # Some upstream releases wrap the application bundle in a second ZIP.
+      - if test ! -f intiface_central; then unzip -o intiface-central-v*-linux-ubuntu-24.04-x64.zip -x run_intiface_central; fi
+
       # Launcher
       - install -Dt /app/bin/ run_intiface_central
 
@@ -27,6 +30,7 @@ modules:
       - install -Dt /app/lib/intiface_central/ intiface_central
       - cp -r data /app/lib/intiface_central/
       - cp -r lib /app/lib/intiface_central/
+      - if test -f lib/crashpad_handler; then install -m755 lib/crashpad_handler /app/lib/intiface_central/lib/; fi
 
       # Metainfo
       - install -Dt /app/share/metainfo/ com.nonpolynomial.intiface_central.metainfo.xml
@@ -45,9 +49,10 @@ modules:
         x-checker-data:
           type: json
           url: https://api.github.com/repos/intiface/intiface-central/releases/latest
-          version-query: .name | sub("^.*v"; "")
-          url-query: '.assets[] | select(.name | endswith($version + "-linux-ubuntu-22.04-x64.zip")) | .browser_download_url'
-
+          version-query: .tag_name | ltrimstr("v")
+          # Keep build metadata for update detection; upstream omits it from asset names.
+          url-query: .assets[] | select(.name == ("intiface-central-v" + ($version | split("+")[0]) + "-linux-ubuntu-24.04-x64.zip"))
+            | .browser_download_url
 
       # Launcher
       - type: file
