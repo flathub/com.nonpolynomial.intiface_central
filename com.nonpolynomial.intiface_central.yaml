@@ -20,6 +20,9 @@ modules:
   - name: intiface
     buildsystem: simple
     build-commands:
+      # Some upstream releases wrap the application bundle in a second ZIP.
+      - if test ! -f intiface_central; then unzip -o intiface-central-v*-linux-ubuntu-24.04-x64.zip -x run_intiface_central; fi
+
       # Launcher
       - install -Dt /app/bin/ run_intiface_central
 
@@ -27,6 +30,7 @@ modules:
       - install -Dt /app/lib/intiface_central/ intiface_central
       - cp -r data /app/lib/intiface_central/
       - cp -r lib /app/lib/intiface_central/
+      - if test -f lib/crashpad_handler; then install -m755 lib/crashpad_handler /app/lib/intiface_central/lib/; fi
 
       # Metainfo
       - install -Dt /app/share/metainfo/ com.nonpolynomial.intiface_central.metainfo.xml
